@@ -38,9 +38,9 @@ def parse_args():
 
 def train(args):
 
-    model = BartForConditionalGeneration.from_pretrained("/misc/projdata11/info_fil/hryang/data/bart_large/").to(device)
+    model = BartForConditionalGeneration.from_pretrained("facebook/bart-large").to(device)
     model.load_state_dict(torch.load(args.output_dir+"/model.bin"))
-    tok = BartTokenizer.from_pretrained("/misc/projdata11/info_fil/hryang/data/bart_large/")
+    tok = BartTokenizer.from_pretrained("facebook/bart-large")
 
     if args.mask == "True":
         test_dataset = UnOrder_Mask(args, tok, 'test', mask=True)
